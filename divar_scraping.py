@@ -37,3 +37,43 @@ year_list = []
 price_list = []
 mil_list = []
 model_list = []
+
+for y in year:
+    y = str(y)
+    yr = re.findall(r"<span class=\"vehicle-card-year font-size-1\">(.*)</span>", y)
+    yr = str(yr)
+    yr = yr.replace("['", "")
+    yr = yr.replace("']", "")
+    year_list.append(yr)
+
+for p in price:
+    p = str(p)
+    pr = re.findall(r"<h4 class=\"heading-3 margin-y-1 font-weight-bold\" data-qa=\"Heading\" data-test=\"vehicleCardPricingBlockPrice\">(.*)</h4>", p)
+    pr = str(pr)
+    pr = pr.replace("['", "")
+    pr = pr.replace("']", "")
+    price_list.append(pr)
+for parantez in range(len(price_list)):
+    try:
+        price_list.remove('[]')
+    except:
+        pass
+
+
+for m in mil:
+    m = str(m)
+    mr = re.findall(r"<div\ class=\"font-size-1\ text-truncate\" data-test=\"vehicleMileage\">.*</circle></svg>(.*)</div>", m)
+    mr = str(mr)
+    mr = mr.replace("<!-- -->","")
+    mr = mr.replace("['", "")
+    mr = mr.replace("']", "")
+    mil_list.append(mr)
+
+for mo in model:
+    mo = str(mo)
+    mor = re.findall(r"<span\ class=\"vehicle-header-make-model\ text-truncate\">(.*)</span>", mo)
+    mor = str(mor)
+    mor = mor.replace("<!-- --> <!-- -->", "  ")
+    mor = mor.replace("['", "")
+    mor = mor.replace("']", "")
+    model_list.append(mor)
