@@ -1,1 +1,1 @@
-user='root', password='', host='your data base address', database='truecar'
+user='root', password='', host='your data base address', database=''
