@@ -77,3 +77,24 @@ for mo in model:
     mor = mor.replace("['", "")
     mor = mor.replace("']", "")
     model_list.append(mor)
+
+	
+cnx = mysql.connector.connect(user='root', password='',
+                              host='127.0.0.1',
+                             database='truecar')
+
+cursor = cnx.cursor()
+
+
+d = 0
+for i in range(20):
+    add = "INSERT INTO truecar (model, year, miles, price) VALUES (%s, %s, %s, %s)" #"truecar" is my table
+    insert = (model_list[d], year_list[d], mil_list[d], price_list[d])
+    cursor.execute(add, insert)
+    cnx.commit()
+    d = d+1
+
+cnx.commit()
+cursor.close()
+cnx.close()
+
