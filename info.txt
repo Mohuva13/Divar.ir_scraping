@@ -1,1 +1,3 @@
-This is script 
+This is Divar web scraping script with python
+
+Before run , install libraries with requirements.txt
